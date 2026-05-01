@@ -1,17 +1,17 @@
 # Employee-Salary-Management-API
 
-##Description
+## Description
 This project is a RESTful API built with Spring Boot for managing employee salary data, with support for different employee types (students and non-students). The system handles employee records, salary calculations, and basic validation such as PESEL number correctness.
 The API separates business logic based on employee type, allowing different handling of salary rules and data structures. It follows a layered architecture (Controller → Service → Repository) and uses DTOs for clean request/response handling.
 
-##Features
+## Features
 1.Manage employees (students and non-students)
 2.CRUD operations for employee records
 3.Salary handling based on employee type
 4.Clean separation of concerns (Controller, Service, Repository layers)
 5.Docker support for easy deployment
 
-##Technologies used
+## Technologies used
 - Java
 - Spring Boot
 - Spring Web
@@ -20,7 +20,7 @@ The API separates business logic based on employee type, allowing different hand
 - Docker & Docker Compose
 - REST API design principles
 
-  ##Architecture
+## Architecture
 Controllers – handle HTTP requests
 Services – business logic
 Repositories – database access
