@@ -15,6 +15,7 @@ The API separates business logic based on employee type, allowing different hand
 - Java
 - Spring Boot
 - Spring Web
+- PostgreSQL
 - Spring Data JPA
 - Maven
 - Docker & Docker Compose
