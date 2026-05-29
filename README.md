@@ -9,12 +9,13 @@ The API separates business logic based on employee type, allowing different hand
 2.CRUD operations for employee records
 3.Salary handling based on employee type
 4.Clean separation of concerns (Controller, Service, Repository layers)
-5.Docker support for easy deployment
+5.Authentication implemented(Registration and Login for students)
 
 ## Technologies used
 - Java
 - Spring Boot
 - Spring Web
+- Spring Security
 - PostgreSQL
 - Spring Data JPA
 - Maven
