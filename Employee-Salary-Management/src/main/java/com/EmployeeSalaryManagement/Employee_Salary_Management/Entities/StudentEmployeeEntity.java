@@ -1,21 +1,21 @@
 package com.EmployeeSalaryManagement.Employee_Salary_Management.Entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.UuidGenerator;
 
 import java.util.UUID;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
+@Table(name="student_employee_entity")
 public class StudentEmployeeEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
+    @UuidGenerator
     private UUID id;
     private String fullName;
     private int age;
@@ -26,6 +26,37 @@ public class StudentEmployeeEntity {
     private Long peselNumber;
     private String department;
     private double workedHours;
+
+    //authorization
+    private String username;
+    private String password;
+
+
+
+
+    public UUID getId() {
+        return id;
+    }
+
+    public void setId(UUID id) {
+        this.id = id;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getPassword() {
+        return password;
+    }
 
     public void setFullName(String fullName) {
         this.fullName = fullName;

@@ -14,6 +14,8 @@ public class StudentService {
         private StudentRepository student;
 
     StudentEmployeeResponse studentEmployeeResponse = new StudentEmployeeResponse();
+
+
     public double calculateSalary(StudentEmployeeRequest studentRequest) {
         StudentEmployeeEntity studentEmployee = new StudentEmployeeEntity();
         double netSalary=0;
@@ -24,14 +26,22 @@ public class StudentService {
 
         if (studentRequest.getAge() >= 18 && studentRequest.getAge() <= 26 && studentRequest.getContractType().equalsIgnoreCase("umowa o prace")) {
             double taxAmount = studentRequest.getBaseSalary() * 0.13;
-            netSalary = (studentRequest.getBaseSalary() - taxAmount) + studentRequest.getBonusAmount();
+            //netSalary = (studentRequest.getBaseSalary() - taxAmount) + studentRequest.getBonusAmount();
+            netSalary=(studentRequest.getBaseSalary()-taxAmount *studentRequest.getWorkedHours())+studentRequest.getBonusAmount();
             studentEmployee.setNetSalary(netSalary);
         }
         if(studentRequest.getAge()>26 && studentRequest.getContractType().equalsIgnoreCase("umowa zlecenie")){
             double taxAmount = studentRequest.getBaseSalary()*0.27;
-            netSalary = (studentRequest.getBaseSalary()* studentRequest.getWorkedHours()-taxAmount)+ studentRequest.getBonusAmount();
+            //netSalary = (studentRequest.getBaseSalary()* studentRequest.getWorkedHours()-taxAmount)+ studentRequest.getBonusAmount();
+            netSalary=(studentRequest.getBaseSalary()-taxAmount * studentRequest.getWorkedHours())+studentRequest.getBonusAmount();
             studentEmployee.setNetSalary(netSalary);
         }
+        String formattedPeselNumber=String.valueOf(studentRequest.getPeselNumber());
+        if(formattedPeselNumber.length()!=11){
+            throw new IncorrectPeselNumberException("the pesel number must be 11-digits");
+        }
+        Long pesel=Long.valueOf(formattedPeselNumber);
+        studentEmployee.setPeselNumber(pesel);
         if(studentRequest.getAge()>26 && studentRequest.getContractType().equalsIgnoreCase("umowa o prace")){
             double taxAmount = studentRequest.getBaseSalary() * 0.27;
             netSalary = (studentRequest.getBaseSalary() - taxAmount) + studentRequest.getBonusAmount();
@@ -49,6 +59,7 @@ public class StudentService {
         studentEmployee.setAge(studentRequest.getAge());
         studentEmployee.setBonusAmount(studentRequest.getBonusAmount());
         studentEmployee.setPeselNumber(studentRequest.getPeselNumber());
+        studentEmployee.setDepartment(studentRequest.getDepartment());
         student.save(studentEmployee);
         //calculate salary
         double salary = calculateSalary(studentRequest);

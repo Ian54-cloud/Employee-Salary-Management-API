@@ -13,6 +13,8 @@ public class StudentEmployeeRequest {
     private double workedHours;
     private double bonusAmount;
 
+
+
     public void setPeselNumber(Long peselNumber) {
         this.peselNumber = peselNumber;
     }
