@@ -1,5 +1,4 @@
 # Employee-Salary-Management-API
-
 A RESTful API built with Java 17 and Spring Boot for managing employees and automating net salary calculations based on Polish contract types.
 
 ### Authentication
