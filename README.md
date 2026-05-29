@@ -1,34 +1,38 @@
 # Employee-Salary-Management-API
 
-## Description
-This project is a RESTful API built with Spring Boot for managing employee salary data, with support for different employee types (students and non-students). The system handles employee records, salary calculations, and basic validation such as PESEL number correctness.
-The API separates business logic based on employee type, allowing different handling of salary rules and data structures. It follows a layered architecture (Controller → Service → Repository) and uses DTOs for clean request/response handling.
+A RESTful API built with Java 17 and Spring Boot for managing employees and automating net salary calculations based on Polish contract types.
 
-## Features
-1.Manage employees (students and non-students)
-2.CRUD operations for employee records
-3.Salary handling based on employee type
-4.Clean separation of concerns (Controller, Service, Repository layers)
-5.Authentication implemented(Registration and Login for students)
+### Authentication
+- User registration with BCrypt password encryption
+- JWT token generation on registration and login (HMAC256)
+- Protected endpoints requiring valid token
 
-## Technologies used
-- Java
+### Salary Management
+- Automated net salary calculation based on:
+  - Contract type (Umowa Zlecenie / Umowa o Pracę)
+  - Age bracket (under 26 / over 26)
+  - Tax deductions, worked hours, and bonus amounts
+- PESEL number validation (11-digit format)
+
+### Employee Management
+- Full CRUD operations for student and non-student employees
+- PESEL-based employee lookup
+- Separate salary logic per employee category
+
+### Exception Handling
+- Custom exceptions for duplicate usernames, invalid PESEL, wrong password
+- Global exception handler returning proper HTTP status codes (400, 409)
+
+## Tech Stack
+- Java 17
 - Spring Boot
-- Spring Web
-- Spring Security
+- Spring Security 
+- JWT (auth0) 
+- BCrypt 
+- Spring Data JPA 
 - PostgreSQL
-- Spring Data JPA
-- Maven
-- Docker & Docker Compose
-- REST API design principles
-
-## Architecture
-Controllers – handle HTTP requests
-Services – business logic
-Repositories – database access
-Entities – database models
-Exceptions-throw an error when user input doesn't match with the required requirements
-Security- Specific endpoints require authentication and also, at this project, I encrypted the plain text password from user because we cant store raw password on database.
+- Docker 
+- Maven 
 
 
 
