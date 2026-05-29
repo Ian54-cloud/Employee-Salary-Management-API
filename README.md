@@ -27,6 +27,8 @@ Controllers – handle HTTP requests
 Services – business logic
 Repositories – database access
 Entities – database models
-DTOs (Requests/Responses) – data transfer
+Exceptions-throw an error when user input doesn't match with the required requirements
+Security- Specific endpoints require authentication and also, at this project, I encrypted the plain text password from user because we cant store raw password on database.
+
 
 
